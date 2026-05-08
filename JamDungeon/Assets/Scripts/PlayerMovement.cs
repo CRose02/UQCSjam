@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
 
         move = new Vector3(x, y, 0f).normalized;
         moveForce = Mathf.Clamp(maxSpeed - rb.velocity.magnitude, 0f, 100f);
+
+        if (move != Vector3.zero)
+        {
+            transform.up = move.normalized;
+        }
     }
 
     private void FixedUpdate()
