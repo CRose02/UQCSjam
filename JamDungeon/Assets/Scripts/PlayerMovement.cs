@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     private float dashTimer = 0f;
 
     private Rigidbody2D rb;
+    private PlayerSquash playerSquash;
     private float moveForce;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerSquash = GetComponentInChildren<PlayerSquash>();
     }
 
     // Update is called once per frame
@@ -75,5 +77,6 @@ public class PlayerMovement : MonoBehaviour
         onDashCooldown = true;
 
         rb.velocity = move * dashForce;
+        playerSquash.Squash();
     }
 }
