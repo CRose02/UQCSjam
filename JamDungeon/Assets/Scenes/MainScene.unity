@@ -996,6 +996,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
+  freezeFrameTime: 0.1
+  isFreeze: 0
 --- !u!1 &1443694618
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,9 @@ public class PlayerDamage : MonoBehaviour
     private Color normalColor;
     public AnimationCurve flashColorCurve;
 
+    public float freezeFrameTime;
+    public bool isFreeze = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,11 +51,25 @@ public class PlayerDamage : MonoBehaviour
             invinsibleTimer = 0f;
             hurtbox.enabled = true;
         }
+
+        /*
+        if (invinsibleTimer > freezeFrameTime && isFreeze)
+        {
+            isFreeze = false;
+            Time.timeScale = 1f;
+        }
+        */
     }
 
     private void DoFlashing()
     {
         spriteRenderer.color = Color.Lerp(normalColor, flashColor, flashColorCurve.Evaluate(invinsibleTimer / flashFrequency));
+    }
+
+    private void BeginFreeze()
+    {
+        isFreeze = true;
+        Time.timeScale = 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,8 +80,20 @@ public class PlayerDamage : MonoBehaviour
         }
 
         BeginInvinsible();
+        //BeginFreeze();
+        StartCoroutine(Freeze());
         GameManager.Instance.TakeDamage();
 
         Destroy(collision.gameObject.transform.parent.gameObject);
+    }
+
+
+    IEnumerator Freeze()
+    {
+        //print(Time.time);
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(freezeFrameTime);
+        Time.timeScale = 1f;
+        //print(Time.time);
     }
 }
