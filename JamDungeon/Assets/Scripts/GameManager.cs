@@ -34,4 +34,15 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public bool TakeDamage()
+    {
+        currentPlayerHealth--;
+        if (currentPlayerHealth == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
