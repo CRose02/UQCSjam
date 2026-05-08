@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DamagePlayer
   - PlayerHurtbox
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -9,10 +9,21 @@ public class BulletHit : MonoBehaviour
 
     public GameObject particles;
 
+    private float bulletLifetimer = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        bulletLifetimer += Time.deltaTime;
+        if (bulletLifetimer > 100f)
+        {
+            KillBullet();
+        }
     }
 
     private void KillBullet()
@@ -24,6 +35,12 @@ public class BulletHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Wall"))
+        {
+            KillBullet();
+            return;
+        }
+
         if (!collision.CompareTag("PlayerHurtbox"))
         {
             return;
