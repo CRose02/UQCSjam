@@ -72,6 +72,16 @@ public class PlayerDamage : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void TakeDamage()
+    {
+        BeginInvinsible();
+        //BeginFreeze();
+        StartCoroutine(Freeze());
+        GameManager.Instance.TakeDamage();
+
+        //Destroy(collision.gameObject.transform.parent.gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("DamagePlayer"))
