@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float maxSpeed;
+    public float dashForce;
+    public float dashCooldown;
+    public bool onDashCooldown = false;
+    private float dashTimer = 0f;
 
     private Rigidbody2D rb;
     private float moveForce;
@@ -19,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleInputs();
+        HandleDash();
     }
 
     Vector3 move;
@@ -39,5 +44,36 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.AddForce(move * moveForce);
+    }
+
+    private void HandleDash()
+    {
+        if (onDashCooldown)
+        {
+            dashTimer += Time.deltaTime;
+            if (dashTimer > dashCooldown)
+            {
+                dashTimer = 0f;
+                onDashCooldown = false;
+            }
+
+            return;
+        }
+
+        if (!Input.GetKeyDown(KeyCode.Space) || move == Vector3.zero)
+        {
+            return;
+        }
+
+        StartDash();
+
+        
+    }
+
+    public void StartDash()
+    {
+        onDashCooldown = true;
+
+        rb.velocity = move * dashForce;
     }
 }
