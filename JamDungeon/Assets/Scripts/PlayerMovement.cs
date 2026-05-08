@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            transform.up = move.normalized;
+            transform.up = move;
         }
     }
 
