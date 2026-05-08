@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8418785895898098636, guid: 0a70a9249cb6e204d96900cb461fea7f, type: 3}
-  bulletForce: 2
+  bulletForce: 1.5
   attackCooldown: 1
 --- !u!1 &345986551
 GameObject:
