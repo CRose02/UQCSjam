@@ -8,6 +8,7 @@ TagManager:
   - PlayerHurtbox
   - Wall
   - EnemyHurt
+  - Key
   layers:
   - Default
   - TransparentFX

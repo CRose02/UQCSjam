@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public int maxPlayerHealth;
     public int currentPlayerHealth;
+    public bool hasKey;
 
     // Start is called before the first frame update
     void Start()
