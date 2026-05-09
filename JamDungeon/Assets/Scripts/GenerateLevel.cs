@@ -15,9 +15,12 @@ public class GenerateLevel : MonoBehaviour
 
     public GameObject enemy1;
 
+    private Transform playerTrans;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerTrans = GameObject.Find("Player").transform;
         GameManager.Instance.generateLevel = this;
         GenerateNew();
     }
@@ -80,8 +83,22 @@ public class GenerateLevel : MonoBehaviour
             }
         }
 
+        // Place player
+        Vector2 playerPlacement;
+        while (true)
+        {
+            playerPlacement = new Vector2(Random.Range(-width / 8f, width / 8f), Random.Range(-height / 8f, height / 8f));
+            Collider2D[] cols = Physics2D.OverlapCircleAll(playerPlacement, 2f, wallLayer);
+
+            if (cols.Length == 0)
+            {
+                break;
+            }
+            
+        }
+        playerTrans.position = playerPlacement;
+
         // Place exit
-        //Vector2 randDir = new Vector2();
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.up, 100, wallLayer);
         GameObject exitInst = Instantiate(exit, rayHit.collider.transform.position, Quaternion.identity, levelParent);
         ExitLevel exitLevel = exitInst.GetComponentInChildren<ExitLevel>();
