@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public int enemyHealth;
 
     public GameObject deathparticles;
+    public GameObject key;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,14 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         Instantiate(deathparticles, transform.position, Quaternion.identity);
+
+        if (GameManager.Instance.ShouldDropKey())
+        {
+            Instantiate(key, transform.position, Quaternion.identity);
+            // get rb off key
+            // Apply random dir force impulse
+        }
+
         Destroy(transform.parent.gameObject);
     }
 }

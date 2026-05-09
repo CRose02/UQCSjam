@@ -6,6 +6,7 @@ public class GenerateLevel : MonoBehaviour
 {
     public GameObject wallObj;
     public Transform levelParent;
+    public Transform enemyParent;
 
     public int EnemySpawnCount;
     public float EnemyIncrease;
@@ -17,6 +18,7 @@ public class GenerateLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.generateLevel = this;
         GenerateNew();
     }
 
@@ -85,7 +87,7 @@ public class GenerateLevel : MonoBehaviour
                 }
             }
 
-            Instantiate(enemy1, attemptPlacement, Quaternion.identity, levelParent);
+            Instantiate(enemy1, attemptPlacement, Quaternion.identity, enemyParent);
         }
     }
 

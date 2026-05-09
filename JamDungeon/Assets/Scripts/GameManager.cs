@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int currentPlayerHealth;
     public bool hasKey;
     private GameObject zone;
+    public GenerateLevel generateLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -57,5 +58,56 @@ public class GameManager : MonoBehaviour
     {
         hasKey = true;
         zone.SetActive(true);
+    }
+
+    private int EnemyCount()
+    {
+        return generateLevel.enemyParent.childCount;
+    }
+
+    public bool ShouldDropKey()
+    {
+        if (hasKey)
+        {
+            return false;
+        }
+
+        int enemies = EnemyCount();
+        if (enemies > 20)
+        {
+            return false;
+        }
+
+        if (enemies > 10)
+        {
+            int result = Random.Range(0, 10);
+            if (result == 0)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        if (enemies > 2)
+        {
+            int result = Random.Range(0, 3);
+            if (result == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if (enemies >= 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
