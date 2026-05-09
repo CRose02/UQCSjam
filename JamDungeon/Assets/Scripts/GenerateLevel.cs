@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using TMPro;
 
 public class GenerateLevel : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class GenerateLevel : MonoBehaviour
 
     public int level = 0;
 
-    public Dictionary<int, int> triangleEnemyCountByLevel = new Dictionary<int, int>();
+    public TextMeshProUGUI tmpLevelText;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,7 @@ public class GenerateLevel : MonoBehaviour
     {
         GameManager.Instance.hasKey = false;
         level++;
+        tmpLevelText.text = $"Level: {level}";
 
         if (levelParent.childCount > 0)
         {

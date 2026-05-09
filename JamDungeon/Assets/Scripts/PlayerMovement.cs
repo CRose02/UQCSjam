@@ -14,11 +14,18 @@ public class PlayerMovement : MonoBehaviour
     private PlayerSquash playerSquash;
     private float moveForce;
 
+    public RectTransform dashRect;
+    public float rectStart;
+    public float rectSmall;
+    public AnimationCurve dashUICurve;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerSquash = GetComponentInChildren<PlayerSquash>();
+
+        rectStart = dashRect.rect.width;
     }
 
     // Update is called once per frame
@@ -53,10 +60,12 @@ public class PlayerMovement : MonoBehaviour
         if (onDashCooldown)
         {
             dashTimer += Time.deltaTime;
+            dashRect.sizeDelta = new Vector2(rectStart * dashUICurve.Evaluate(dashTimer/dashCooldown), 22f);
             if (dashTimer > dashCooldown)
             {
                 dashTimer = 0f;
                 onDashCooldown = false;
+                dashRect.sizeDelta = new Vector2(rectStart, 22f);
             }
 
             return;
@@ -78,5 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = move * dashForce;
         playerSquash.Squash();
+
+        dashRect.sizeDelta = new Vector2(rectSmall, 22f);
     }
 }
