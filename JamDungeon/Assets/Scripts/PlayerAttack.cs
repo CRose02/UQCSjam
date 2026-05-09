@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private float attackCooldownTimer = 0f;
     public float attackCooldown;
 
+    public float knockbackForce;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +87,11 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
 
+        Rigidbody2D enemyRb = collision.gameObject.transform.parent.GetComponent<Rigidbody2D>();
+        Vector2 dir = collision.transform.position - transform.position;
+        dir.Normalize();
+        enemyRb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
         collision.GetComponent<EnemyHealth>().TakeDamage();
+
     }
 }

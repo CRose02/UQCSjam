@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public int enemyHealth;
 
     public GameObject deathparticles;
+    public GameObject hurtParticles;
     public GameObject key;
 
     // Start is called before the first frame update
@@ -29,6 +30,9 @@ public class EnemyHealth : MonoBehaviour
         if (enemyHealth == 0)
         {
             Die();
+        } else
+        {
+            Instantiate(hurtParticles, transform.position, Quaternion.identity);
         }
     }
 

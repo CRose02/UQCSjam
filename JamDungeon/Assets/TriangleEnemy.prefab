@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 7477340764283225679}
   - component: {fileID: 2023901097097308345}
   - component: {fileID: 6974263819675122070}
+  - component: {fileID: 5254986156198406951}
   m_Layer: 0
   m_Name: TriangleEnemy
   m_TagString: Untagged
@@ -186,6 +187,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+--- !u!50 &5254986156198406951
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233421185721351485}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &4389819884461816908
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 2
   deathparticles: {fileID: 6449708764849835530, guid: a2ac7672bdd699948bc3927573076efd, type: 3}
+  hurtParticles: {fileID: 5904141585586562115, guid: e67092e8bfecfbd4eb379cbd1d7086bb, type: 3}
   key: {fileID: 7510288681788825113, guid: 772d01527ec894f48a4768ce1adad6af, type: 3}
 --- !u!1 &5188960108444819612
 GameObject:
