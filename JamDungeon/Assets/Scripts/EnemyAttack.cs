@@ -10,6 +10,7 @@ public class EnemyAttack : MonoBehaviour
     public float bulletForce;
     public float attackCooldown;
     private float attackTimer = 0f;
+    public float sightDistance;
 
     private Transform playerTrans;
 
@@ -27,7 +28,13 @@ public class EnemyAttack : MonoBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer > attackCooldown)
         {
-            RaycastHit2D rayHit = Physics2D.Raycast(transform.position, playerTrans.position - transform.position, 1000f, lineOfSight);
+            RaycastHit2D rayHit = Physics2D.Raycast(transform.position, playerTrans.position - transform.position, sightDistance, lineOfSight);
+
+            if (!rayHit)
+            {
+                attackTimer = 0f;
+                return;
+            }
 
             if (!rayHit.transform.CompareTag("Player"))
             {

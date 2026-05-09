@@ -312,6 +312,7 @@ MonoBehaviour:
   bullet: {fileID: 8418785895898098636, guid: 0a70a9249cb6e204d96900cb461fea7f, type: 3}
   bulletForce: 1.5
   attackCooldown: 1
+  sightDistance: 8
   lineOfSight:
     serializedVersion: 2
     m_Bits: 384
