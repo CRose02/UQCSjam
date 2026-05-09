@@ -27,6 +27,8 @@ public class GenerateLevel : MonoBehaviour
 
     public void GenerateNew()
     {
+        GameManager.Instance.hasKey = false;
+
         if (levelParent.childCount > 0)
         {
             List<Transform> children = new List<Transform>();
@@ -57,7 +59,7 @@ public class GenerateLevel : MonoBehaviour
 
         int width = 80;
         int height = 80;
-        float lowCutOff = -0.5f;
+        float lowCutOff = -0.2f;
         float highCutOff = 0.5f;
         float scale = 0.1f;
         float densityRamp = 0.001f;
@@ -85,12 +87,14 @@ public class GenerateLevel : MonoBehaviour
 
         // Place player
         Vector2 playerPlacement;
+        int playerAttempts = 0;
         while (true)
         {
             playerPlacement = new Vector2(Random.Range(-width / 8f, width / 8f), Random.Range(-height / 8f, height / 8f));
             Collider2D[] cols = Physics2D.OverlapCircleAll(playerPlacement, 2f, wallLayer);
+            playerAttempts++;
 
-            if (cols.Length == 0)
+            if (cols.Length == 0 || playerAttempts > 10000)
             {
                 break;
             }
@@ -107,12 +111,14 @@ public class GenerateLevel : MonoBehaviour
         for (int i = 0; i < EnemySpawnCount; i++)
         {
             Vector2 attemptPlacement;
+            int enemyAttempts = 0;
             while (true)
             {
                 attemptPlacement = new Vector2(Random.Range(-width / 2f, width / 2f), Random.Range(-height / 2f, height / 2f));
-                Collider2D[] cols = Physics2D.OverlapCircleAll(attemptPlacement, 2f, wallLayer);
+                Collider2D[] cols = Physics2D.OverlapCircleAll(attemptPlacement, 1.2f, wallLayer);
+                enemyAttempts++;
 
-                if (cols.Length == 0)
+                if (cols.Length == 0 || enemyAttempts > 10000)
                 {
                     break;
                 }
