@@ -162,7 +162,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 63147249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -465,7 +465,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  fadeTime: 0.15
+  fadeTime: 0.1
   holdTime: 0.7
   nothingColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 0}
   fadeColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
@@ -715,6 +715,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bf6cab777197640ae2a37c37fba4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &563860585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6800602108851962526, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_Name
+      value: TrackEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.024364
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.479089
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068234775100561292, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
 --- !u!1 &908034873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,14 +1169,16 @@ MonoBehaviour:
   wallObj: {fileID: 881978188725600558, guid: 94a89d4cb26297b4d9ce62cbe7f149a9, type: 3}
   levelParent: {fileID: 275353773}
   enemyParent: {fileID: 1266916434}
-  EnemySpawnCount: 7
+  EnemySpawnCount: 2
   EnemyIncrease: 0
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
   exit: {fileID: 2617496668185233969, guid: 093b3c593b09d0e4ea9b36a1f2a11160, type: 3}
   enemy1: {fileID: 2233421185721351485, guid: 10b2d2ee8064cf44385ccbafd73b3ae7, type: 3}
+  enemy2: {fileID: 6800602108851962526, guid: 15979f7c1764a354a846d2cd4c6fda43, type: 3}
   levelTransition: {fileID: 269971344}
+  level: 0
 --- !u!4 &1451296011
 Transform:
   m_ObjectHideFlags: 0
@@ -2093,6 +2152,7 @@ SceneRoots:
   - {fileID: 275353773}
   - {fileID: 1266916434}
   - {fileID: 417788497}
-  - {fileID: 1611421473}
   - {fileID: 1657602291}
   - {fileID: 348307880534024798}
+  - {fileID: 563860585}
+  - {fileID: 1611421473}

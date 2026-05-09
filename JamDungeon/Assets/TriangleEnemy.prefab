@@ -312,6 +312,7 @@ MonoBehaviour:
   deathparticles: {fileID: 6449708764849835530, guid: a2ac7672bdd699948bc3927573076efd, type: 3}
   hurtParticles: {fileID: 5904141585586562115, guid: e67092e8bfecfbd4eb379cbd1d7086bb, type: 3}
   key: {fileID: 7510288681788825113, guid: 772d01527ec894f48a4768ce1adad6af, type: 3}
+  keyForce: 15
 --- !u!1 &5188960108444819612
 GameObject:
   m_ObjectHideFlags: 0

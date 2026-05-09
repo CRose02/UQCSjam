@@ -25,6 +25,13 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool playerNear = Vector2.Distance(transform.position, playerTrans.position) < sightDistance;
+
+        if (playerNear)
+        {
+            transform.up = playerTrans.position - transform.position;
+        }
+
         attackTimer += Time.deltaTime;
         if (attackTimer > attackCooldown)
         {

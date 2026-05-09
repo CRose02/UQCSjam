@@ -15,6 +15,7 @@ public class GenerateLevel : MonoBehaviour
     public GameObject exit;
 
     public GameObject enemy1;
+    public GameObject enemy2;
 
     private Transform playerTrans;
 
@@ -22,17 +23,26 @@ public class GenerateLevel : MonoBehaviour
 
     public LevelTransition levelTransition;
 
+    public int level = 0;
+
+    public Dictionary<int, int> triangleEnemyCountByLevel = new Dictionary<int, int>();
+
     // Start is called before the first frame update
     void Start()
     {
         playerTrans = GameObject.Find("Player").transform;
         GameManager.Instance.generateLevel = this;
         GenerateNew();
+
+        //triangleEnemyCountByLevel.Add(1, 2);
+        //triangleEnemyCountByLevel.Add(2, 2);
+        //triangleEnemyCountByLevel.Add(2, 2);
     }
 
     public void GenerateNew()
     {
         GameManager.Instance.hasKey = false;
+        level++;
 
         if (levelParent.childCount > 0)
         {
@@ -170,24 +180,44 @@ public class GenerateLevel : MonoBehaviour
         ExitLevel exitLevel = exitInst.GetComponentInChildren<ExitLevel>();
         exitLevel.Setup(this, levelTransition);
 
-        // Place enemies
-        for (int i = 0; i < EnemySpawnCount; i++)
+        // Place triangle enemies
+        int numGroupsToSpawn = Mathf.Clamp(level+1, 0, 7);
+        float individualOffset = 5f;
+        for (int i = 0; i < numGroupsToSpawn; i++)
         {
-            Vector2 attemptPlacement;
-            int enemyAttempts = 0;
+            Vector2 attemptGroupPlacement;
+            int groupAttempts = 0;
+
             while (true)
             {
-                attemptPlacement = new Vector2(Random.Range(-width / 2f, width / 2f), Random.Range(-height / 2f, height / 2f));
-                Collider2D[] cols = Physics2D.OverlapCircleAll(attemptPlacement, 1.2f, wallLayer);
-                enemyAttempts++;
+                attemptGroupPlacement = new Vector2(Random.Range(-width / 2f, width / 2f), Random.Range(-height / 2f, height / 2f));
+                Collider2D[] cols = Physics2D.OverlapCircleAll(attemptGroupPlacement, 1.2f, wallLayer);
+                groupAttempts++;
 
-                if (cols.Length == 0 || enemyAttempts > 10000)
+                if (cols.Length == 0 || groupAttempts > 10000)
                 {
                     break;
                 }
             }
 
-            Instantiate(enemy1, attemptPlacement, Quaternion.identity, enemyParent);
+            for (int j = 0; j < EnemySpawnCount; j++)
+            {
+                Vector2 attemptPlacement;
+                int enemyAttempts = 0;
+                while (true)
+                {
+                    attemptPlacement = attemptGroupPlacement + new Vector2(Random.Range(-individualOffset, individualOffset), Random.Range(-individualOffset, individualOffset));
+                    Collider2D[] cols = Physics2D.OverlapCircleAll(attemptPlacement, 1.2f, wallLayer);
+                    enemyAttempts++;
+
+                    if (cols.Length == 0 || enemyAttempts > 10000)
+                    {
+                        break;
+                    }
+                }
+
+                Instantiate(enemy1, attemptPlacement, Quaternion.identity, enemyParent);
+            }
         }
     }
 

@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 2
   deathparticles: {fileID: 6449708764849835530, guid: a2ac7672bdd699948bc3927573076efd, type: 3}
+  hurtParticles: {fileID: 5904141585586562115, guid: e67092e8bfecfbd4eb379cbd1d7086bb, type: 3}
   key: {fileID: 7510288681788825113, guid: 772d01527ec894f48a4768ce1adad6af, type: 3}
 --- !u!1 &3909790563342427220
 GameObject:
@@ -170,7 +171,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.59119487, g: 0.09481418, b: 0.09481418, a: 1}
+  m_Color: {r: 0.99215686, g: 0.20784314, b: 0.14509805, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -255,7 +256,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.8490566, g: 0.1949091, b: 0.21134363, a: 1}
+  m_Color: {r: 0.7372549, g: 0.05490196, b: 0.015686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -275,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8068234775100561292}
   - component: {fileID: 924494629267482049}
+  - component: {fileID: 8137519990440800244}
   m_Layer: 0
   m_Name: TrackEnemy
   m_TagString: Untagged
@@ -312,9 +314,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8418785895898098636, guid: 0a70a9249cb6e204d96900cb461fea7f, type: 3}
-  bulletForce: 1.5
-  attackCooldown: 1
+  bulletForce: 1.2
+  attackCooldown: 1.8
   sightDistance: 8
   lineOfSight:
     serializedVersion: 2
     m_Bits: 384
+--- !u!50 &8137519990440800244
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800602108851962526}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
