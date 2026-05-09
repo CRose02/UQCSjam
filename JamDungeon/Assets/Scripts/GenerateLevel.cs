@@ -38,6 +38,20 @@ public class GenerateLevel : MonoBehaviour
             }
         }
 
+        if (enemyParent.childCount > 0)
+        {
+            List<Transform> children = new List<Transform>();
+            for (int c = 0; c < enemyParent.childCount; c++)
+            {
+                children.Add(enemyParent.GetChild(c));
+            }
+
+            for (int d = 0; d < children.Count; d++)
+            {
+                Destroy(children[d].gameObject);
+            }
+        }
+
         int width = 80;
         int height = 80;
         float lowCutOff = -0.5f;
