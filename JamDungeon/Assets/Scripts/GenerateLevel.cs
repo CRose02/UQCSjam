@@ -16,6 +16,11 @@ public class GenerateLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GenerateNew();
+    }
+
+    public void GenerateNew()
+    {
         int width = 80;
         int height = 80;
         float lowCutOff = -0.5f;
@@ -24,9 +29,9 @@ public class GenerateLevel : MonoBehaviour
         float densityRamp = 0.001f;
         int seed = Random.Range(10, 100000);
 
-        for (int i=0; i < width; i++)
+        for (int i = 0; i < width; i++)
         {
-            for (int j=0; j < height; j++)
+            for (int j = 0; j < height; j++)
             {
                 float density = Mathf.PerlinNoise((i + seed) * scale, (j + seed) * scale);
                 density -= 0.5f;
@@ -47,9 +52,11 @@ public class GenerateLevel : MonoBehaviour
         // Place exit
         //Vector2 randDir = new Vector2();
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.up, 100, wallLayer);
-        Instantiate(exit, rayHit.collider.transform.position, Quaternion.identity);
+        GameObject exitInst = Instantiate(exit, rayHit.collider.transform.position, Quaternion.identity);
+        ExitLevel exitLevel = exitInst.GetComponentInChildren<ExitLevel>();
+        exitLevel.Setup(this);
 
-        for (int i=0; i<EnemySpawnCount; i++)
+        for (int i = 0; i < EnemySpawnCount; i++)
         {
             Vector2 attemptPlacement;
             while (true)

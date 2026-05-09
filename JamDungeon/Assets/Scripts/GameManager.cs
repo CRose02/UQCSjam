@@ -23,11 +23,12 @@ public class GameManager : MonoBehaviour
     public int maxPlayerHealth;
     public int currentPlayerHealth;
     public bool hasKey;
+    private GameObject zone;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -45,5 +46,16 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void AssignZone(GameObject zoneInst)
+    {
+        zone = zoneInst;
+    }
+
+    public void onKeyPickup()
+    {
+        hasKey = true;
+        zone.SetActive(true);
     }
 }

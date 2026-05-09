@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectKey : MonoBehaviour
+public class DetectExit : MonoBehaviour
 {
+    private ExitLevel exitLevel;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        exitLevel = GetComponentInParent<ExitLevel>();
     }
 
     // Update is called once per frame
@@ -18,12 +20,13 @@ public class CollectKey : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Key"))
+        Debug.Log(collision.name);
+
+        if (!collision.CompareTag("Player"))
         {
             return;
         }
 
-        GameManager.Instance.onKeyPickup();
-        Destroy(collision.transform.parent.gameObject);
+        exitLevel.OnExit();
     }
 }
