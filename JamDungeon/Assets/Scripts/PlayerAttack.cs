@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerAttack : MonoBehaviour
 {
     private Collider2D attackBox;
+    public GameObject attackVisual;
 
     private bool isAttacking = false;
     private bool canAttack = true;
@@ -53,8 +55,14 @@ public class PlayerAttack : MonoBehaviour
         attackBox.enabled = true;
         isAttacking = true;
         canAttack = false;
+        attackVisual.SetActive(true);
+
+        visualStart = Quaternion.Euler(0, 0, 60f) * transform.parent.up;
+        visualEnd = Quaternion.Euler(0, 0, -60f) * transform.parent.up;
     }
 
+    Vector3 visualStart = new Vector3(1f, 0.1f);
+    Vector3 visualEnd = new Vector3(-1f, 0.1f);
     private void DoAttack()
     {
         attackTimer += Time.deltaTime;
@@ -63,6 +71,11 @@ public class PlayerAttack : MonoBehaviour
             isAttacking = false;
             attackBox.enabled = false;
             attackTimer = 0;
+            attackVisual.SetActive(false);
         }
+
+        
+        Vector3 attackVisualDir = Vector3.Lerp(visualStart, visualEnd, attackTimer / attackTime);
+        attackVisual.transform.up = attackVisualDir;
     }
 }
