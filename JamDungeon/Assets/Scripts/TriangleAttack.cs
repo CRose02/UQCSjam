@@ -11,10 +11,13 @@ public class TriangleAttack : MonoBehaviour
     public float attackCooldown;
     private float attackTimer = 0f;
 
+    private Transform playerTrans;
+    public float sightDistance;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerTrans = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -23,6 +26,13 @@ public class TriangleAttack : MonoBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer > attackCooldown)
         {
+            bool playerNear = Vector2.Distance(transform.position, playerTrans.position) < sightDistance;
+
+            if (!playerNear)
+            {
+                attackTimer = 0f;
+                return;
+            }
 
             Shoot();
             attackTimer = 0f;

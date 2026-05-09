@@ -1011,9 +1011,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtbox: {fileID: 1238444554}
   spriteRenderer: {fileID: 1988631484}
-  invinsibleCooldown: 2
+  invinsibleCooldown: 1.7
   flashFrequency: 0.4
-  flashColor: {r: 0.8490566, g: 0.6114275, b: 0.6114275, a: 1}
+  flashColor: {r: 0.91823894, g: 0.4129187, b: 0.4129187, a: 1}
   flashColorCurve:
     serializedVersion: 2
     m_Curve:
