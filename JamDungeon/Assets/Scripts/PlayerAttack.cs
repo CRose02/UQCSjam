@@ -57,8 +57,8 @@ public class PlayerAttack : MonoBehaviour
         canAttack = false;
         attackVisual.SetActive(true);
 
-        visualStart = Quaternion.Euler(0, 0, 60f) * transform.parent.up;
-        visualEnd = Quaternion.Euler(0, 0, -60f) * transform.parent.up;
+        visualStart = Quaternion.Euler(0, 0, 80f) * transform.parent.up;
+        visualEnd = Quaternion.Euler(0, 0, -80f) * transform.parent.up;
     }
 
     Vector3 visualStart = new Vector3(1f, 0.1f);
@@ -75,7 +75,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         
-        Vector3 attackVisualDir = Vector3.Lerp(visualStart, visualEnd, attackTimer / attackTime);
+        Vector3 attackVisualDir = Vector3.Lerp(visualStart, visualEnd, attackTimer / (attackTime*0.8f));
         attackVisual.transform.up = attackVisualDir;
     }
 
