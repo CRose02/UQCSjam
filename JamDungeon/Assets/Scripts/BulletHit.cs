@@ -54,7 +54,7 @@ public class BulletHit : MonoBehaviour
         Rigidbody2D playerRb = collision.gameObject.GetComponentInParent<Rigidbody2D>();
         Vector2 dir = rb.velocity;
         dir.Normalize();
-        playerRb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
+        playerRb.AddForce(dir * knockbackForce * rb.velocity/10f, ForceMode2D.Impulse);
 
         KillBullet();
     }

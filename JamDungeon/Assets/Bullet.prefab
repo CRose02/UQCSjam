@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fcdec94eae88d4599384476a90944b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 3
+  knockbackForce: 2
   particles: {fileID: 8295349720503811728, guid: 4e822fa51c9b081489e61be9b6a8fc51, type: 3}
 --- !u!96 &5228183907779718401
 TrailRenderer:
