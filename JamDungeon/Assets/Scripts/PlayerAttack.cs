@@ -78,4 +78,14 @@ public class PlayerAttack : MonoBehaviour
         Vector3 attackVisualDir = Vector3.Lerp(visualStart, visualEnd, attackTimer / attackTime);
         attackVisual.transform.up = attackVisualDir;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("EnemyHurt"))
+        {
+            return;
+        }
+
+        collision.GetComponent<EnemyHealth>().TakeDamage();
+    }
 }

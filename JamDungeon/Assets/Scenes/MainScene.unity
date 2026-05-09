@@ -621,9 +621,10 @@ GameObject:
   m_Component:
   - component: {fileID: 424379705}
   - component: {fileID: 424379706}
+  - component: {fileID: 424379707}
   m_Layer: 0
   m_Name: HurtBox
-  m_TagString: Untagged
+  m_TagString: EnemyHurt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -691,6 +692,19 @@ PolygonCollider2D:
       - {x: -0.6, y: -0.35}
       - {x: 0.6, y: -0.35}
   m_UseDelaunayMesh: 0
+--- !u!114 &424379707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424379704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46cdc51a8c1a8184782a75fa195f10ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 2
 --- !u!1 &434345340
 GameObject:
   m_ObjectHideFlags: 0
