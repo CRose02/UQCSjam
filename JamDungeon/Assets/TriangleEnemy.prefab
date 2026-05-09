@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 2
+  deathparticles: {fileID: 6449708764849835530, guid: a2ac7672bdd699948bc3927573076efd, type: 3}
 --- !u!1 &5188960108444819612
 GameObject:
   m_ObjectHideFlags: 0

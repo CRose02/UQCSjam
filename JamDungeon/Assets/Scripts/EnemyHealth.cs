@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
 {
     public int enemyHealth;
 
+    public GameObject deathparticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        Instantiate(deathparticles, transform.position, Quaternion.identity);
         Destroy(transform.parent.gameObject);
     }
 }
