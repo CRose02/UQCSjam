@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenerateLevel : MonoBehaviour
 {
     public GameObject wallObj;
+    public Transform levelParent;
 
     public int EnemySpawnCount;
     public float EnemyIncrease;
@@ -21,6 +22,20 @@ public class GenerateLevel : MonoBehaviour
 
     public void GenerateNew()
     {
+        if (levelParent.childCount > 0)
+        {
+            List<Transform> children = new List<Transform>();
+            for (int c=0; c<levelParent.childCount; c++)
+            {
+                children.Add(levelParent.GetChild(c));
+            }
+
+            for (int d=0; d<children.Count; d++)
+            {
+                Destroy(children[d].gameObject);
+            }
+        }
+
         int width = 80;
         int height = 80;
         float lowCutOff = -0.5f;
@@ -45,14 +60,14 @@ public class GenerateLevel : MonoBehaviour
                 {
                     continue;
                 }
-                Instantiate(wallObj, new Vector2(x, y), Quaternion.identity);
+                Instantiate(wallObj, new Vector2(x, y), Quaternion.identity, levelParent);
             }
         }
 
         // Place exit
         //Vector2 randDir = new Vector2();
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.up, 100, wallLayer);
-        GameObject exitInst = Instantiate(exit, rayHit.collider.transform.position, Quaternion.identity);
+        GameObject exitInst = Instantiate(exit, rayHit.collider.transform.position, Quaternion.identity, levelParent);
         ExitLevel exitLevel = exitInst.GetComponentInChildren<ExitLevel>();
         exitLevel.Setup(this);
 
@@ -70,7 +85,7 @@ public class GenerateLevel : MonoBehaviour
                 }
             }
 
-            Instantiate(enemy1, attemptPlacement, Quaternion.identity);
+            Instantiate(enemy1, attemptPlacement, Quaternion.identity, levelParent);
         }
     }
 
