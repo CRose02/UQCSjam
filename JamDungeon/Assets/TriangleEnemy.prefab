@@ -171,8 +171,8 @@ MonoBehaviour:
   - {fileID: 5761287048318546791}
   - {fileID: 5307828907132874461}
   - {fileID: 2904424281124718380}
-  bulletForce: 0.3
-  attackCooldown: 0.8
+  bulletForce: 0.25
+  attackCooldown: 1.2
 --- !u!114 &6974263819675122070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2539ea5ab2ba1c942b6db46d26240abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 30
 --- !u!1 &4389819884461816908
 GameObject:
   m_ObjectHideFlags: 0
