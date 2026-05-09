@@ -11,6 +11,8 @@ public class GenerateLevel : MonoBehaviour
     public LayerMask wallLayer;
     public GameObject exit;
 
+    public GameObject enemy1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class GenerateLevel : MonoBehaviour
                 int y = j - height / 2;
 
                 density += densityRamp * Mathf.Pow(new Vector2(x, y).magnitude, 2f);
-                Debug.Log(density);
+                //Debug.Log(density);
                 if (density > lowCutOff && density < highCutOff)
                 {
                     continue;
@@ -49,7 +51,19 @@ public class GenerateLevel : MonoBehaviour
 
         for (int i=0; i<EnemySpawnCount; i++)
         {
+            Vector2 attemptPlacement;
+            while (true)
+            {
+                attemptPlacement = new Vector2(Random.Range(-width / 2f, width / 2f), Random.Range(-height / 2f, height / 2f));
+                Collider2D[] cols = Physics2D.OverlapCircleAll(attemptPlacement, 2f, wallLayer);
 
+                if (cols.Length == 0)
+                {
+                    break;
+                }
+            }
+
+            Instantiate(enemy1, attemptPlacement, Quaternion.identity);
         }
     }
 
