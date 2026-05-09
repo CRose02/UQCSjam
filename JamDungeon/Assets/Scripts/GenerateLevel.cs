@@ -103,11 +103,25 @@ public class GenerateLevel : MonoBehaviour
         playerTrans.position = playerPlacement;
 
         // Place exit
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.up, 100, wallLayer);
+        Vector2 rayStart;
+        int rayAttempts = 0;
+        while (true)
+        {
+            rayStart = new Vector2(Random.Range(-width / 12f, width / 12f), Random.Range(-height / 12f, height / 12f));
+            Collider2D[] rayCols = Physics2D.OverlapCircleAll(rayStart, 2f, wallLayer);
+            rayAttempts++;
+
+            if (rayCols.Length == 0 || rayAttempts > 10000)
+            {
+                break;
+            }
+        }
+        RaycastHit2D rayHit = Physics2D.Raycast(rayStart, Vector2.up, 100, wallLayer);
         GameObject exitInst = Instantiate(exit, rayHit.collider.transform.position, Quaternion.identity, levelParent);
         ExitLevel exitLevel = exitInst.GetComponentInChildren<ExitLevel>();
         exitLevel.Setup(this);
 
+        // Place enemies
         for (int i = 0; i < EnemySpawnCount; i++)
         {
             Vector2 attemptPlacement;
