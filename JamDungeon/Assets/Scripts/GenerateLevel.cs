@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GenerateLevel : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GenerateLevel : MonoBehaviour
     public GameObject enemy1;
 
     private Transform playerTrans;
+
+    private GameObject[,] tileGrid;
 
     // Start is called before the first frame update
     void Start()
@@ -57,13 +60,15 @@ public class GenerateLevel : MonoBehaviour
             }
         }
 
-        int width = 80;
-        int height = 80;
+        int width = 60;
+        int height = 60;
         float lowCutOff = -0.2f;
-        float highCutOff = 0.5f;
+        float highCutOff = 0.45f;
         float scale = 0.1f;
-        float densityRamp = 0.001f;
+        float densityRamp = 0.0015f;
         int seed = Random.Range(10, 100000);
+
+        tileGrid = new GameObject[width, height];
 
         for (int i = 0; i < width; i++)
         {
@@ -81,7 +86,49 @@ public class GenerateLevel : MonoBehaviour
                 {
                     continue;
                 }
-                Instantiate(wallObj, new Vector2(x, y), Quaternion.identity, levelParent);
+                tileGrid[i,j] = Instantiate(wallObj, new Vector2(x, y), Quaternion.identity, levelParent);
+            }
+        }
+
+        for (int e=0; e<width; e++)
+        {
+            for (int f=0; f<height; f++)
+            {
+                // if not all neighbours
+                if (tileGrid[e,f] == null)
+                {
+                    continue;
+                }
+
+                // edges
+                if (e == 0 || e == width-1 || f == 0 || f == height-1)
+                {
+                    Destroy(tileGrid[e, f].GetComponent<ShadowCaster2D>());
+                    continue;
+                }
+
+                //left
+                if (tileGrid[e-1,f] == null)
+                {
+                    continue;
+                }
+                //right
+                if (tileGrid[e + 1, f] == null)
+                {
+                    continue;
+                }
+                //up
+                if (tileGrid[e, f+1] == null)
+                {
+                    continue;
+                }
+                //down
+                if (tileGrid[e, f - 1] == null)
+                {
+                    continue;
+                }
+
+                Destroy(tileGrid[e, f].GetComponent<ShadowCaster2D>());
             }
         }
 
