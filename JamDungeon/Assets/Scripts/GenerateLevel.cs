@@ -20,6 +20,8 @@ public class GenerateLevel : MonoBehaviour
 
     private GameObject[,] tileGrid;
 
+    public LevelTransition levelTransition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -166,7 +168,7 @@ public class GenerateLevel : MonoBehaviour
         RaycastHit2D rayHit = Physics2D.Raycast(rayStart, Vector2.up, 100, wallLayer);
         GameObject exitInst = Instantiate(exit, rayHit.collider.transform.position, Quaternion.identity, levelParent);
         ExitLevel exitLevel = exitInst.GetComponentInChildren<ExitLevel>();
-        exitLevel.Setup(this);
+        exitLevel.Setup(this, levelTransition);
 
         // Place enemies
         for (int i = 0; i < EnemySpawnCount; i++)
