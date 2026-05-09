@@ -75,7 +75,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         
-        Vector3 attackVisualDir = Vector3.Lerp(visualStart, visualEnd, attackTimer / (attackTime*0.8f));
+        Vector3 attackVisualDir = Vector3.Lerp(visualStart, visualEnd, attackTimer / (attackTime*0.4f));
         attackVisual.transform.up = attackVisualDir;
     }
 
