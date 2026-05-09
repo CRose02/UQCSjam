@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyAttack : MonoBehaviour
 
     private Transform playerTrans;
 
+    public LayerMask lineOfSight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +24,19 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if line of sight
         attackTimer += Time.deltaTime;
         if (attackTimer > attackCooldown)
         {
+            RaycastHit2D rayHit = Physics2D.Raycast(transform.position, playerTrans.position - transform.position, 1000f, lineOfSight);
+
+            if (!rayHit.transform.CompareTag("Player"))
+            {
+                attackTimer = 0f;
+                return;
+            }
+            
+            //Debug.Log(rayHit.transform.name);
+
             Shoot();
             attackTimer = 0f;
         }

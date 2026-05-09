@@ -378,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 330197889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.96, y: -1.74, z: 0}
+  m_LocalPosition: {x: 6.2, y: -0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -401,6 +401,9 @@ MonoBehaviour:
   bullet: {fileID: 8418785895898098636, guid: 0a70a9249cb6e204d96900cb461fea7f, type: 3}
   bulletForce: 1.5
   attackCooldown: 1
+  lineOfSight:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!1 &345986551
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +415,7 @@ GameObject:
   - component: {fileID: 345986554}
   - component: {fileID: 345986553}
   - component: {fileID: 345986552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -544,7 +547,7 @@ GameObject:
   - component: {fileID: 417788496}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -715,9 +718,9 @@ GameObject:
   m_Component:
   - component: {fileID: 434345341}
   - component: {fileID: 434345342}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PhysicsHitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
