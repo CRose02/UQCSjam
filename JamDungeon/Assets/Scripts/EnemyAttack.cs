@@ -20,6 +20,7 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
         playerTrans = GameObject.Find("Player").transform;
+        attackTimer += Random.Range(0f, 1f);
     }
 
     // Update is called once per frame

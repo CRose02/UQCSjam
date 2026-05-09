@@ -172,7 +172,7 @@ MonoBehaviour:
   - {fileID: 5761287048318546791}
   - {fileID: 5307828907132874461}
   - {fileID: 2904424281124718380}
-  bulletForce: 0.25
+  bulletForce: 0.2
   attackCooldown: 1.2
   sightDistance: 12
 --- !u!114 &6974263819675122070

@@ -219,6 +219,27 @@ public class GenerateLevel : MonoBehaviour
                 Instantiate(enemy1, attemptPlacement, Quaternion.identity, enemyParent);
             }
         }
+
+        // Place sharpshooter enemies
+        int shootersToSpawn = level;
+        for (int j = 0; j < shootersToSpawn; j++)
+        {
+            Vector2 attemptPlacement;
+            int enemyAttempts = 0;
+            while (true)
+            {
+                attemptPlacement = new Vector2(Random.Range(-width / 2f, width / 2f), Random.Range(-height / 2f, height / 2f));
+                Collider2D[] cols = Physics2D.OverlapCircleAll(attemptPlacement, 1.2f, wallLayer);
+                enemyAttempts++;
+
+                if (cols.Length == 0 || enemyAttempts > 10000)
+                {
+                    break;
+                }
+            }
+
+            Instantiate(enemy2, attemptPlacement, Quaternion.identity, enemyParent);
+        }
     }
 
     // Update is called once per frame

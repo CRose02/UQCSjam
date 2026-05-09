@@ -97,6 +97,7 @@ MonoBehaviour:
   deathparticles: {fileID: 6449708764849835530, guid: a2ac7672bdd699948bc3927573076efd, type: 3}
   hurtParticles: {fileID: 5904141585586562115, guid: e67092e8bfecfbd4eb379cbd1d7086bb, type: 3}
   key: {fileID: 7510288681788825113, guid: 772d01527ec894f48a4768ce1adad6af, type: 3}
+  keyForce: 15
 --- !u!1 &3909790563342427220
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8418785895898098636, guid: 0a70a9249cb6e204d96900cb461fea7f, type: 3}
-  bulletForce: 1.2
+  bulletForce: 0.8
   attackCooldown: 1.8
   sightDistance: 8
   lineOfSight:
