@@ -31,8 +31,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
+
         HandleInputs();
         HandleDash();
+    }
+
+    private bool canMove = true;
+    public void StopMove()
+    {
+        canMove = false;
+    }
+    public void StartMove()
+    {
+        canMove = true;
     }
 
     Vector3 move;

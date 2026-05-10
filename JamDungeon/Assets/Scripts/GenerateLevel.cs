@@ -43,6 +43,7 @@ public class GenerateLevel : MonoBehaviour
     public void ResetLevelSystem()
     {
         level = 0;
+        GameManager.Instance.ResetFromDeath();
         GenerateNew();
     }
 

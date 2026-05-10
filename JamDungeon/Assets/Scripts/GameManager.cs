@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     public Sprite crossSprite;
     public Image keyCheckbox;
 
+    public PlayerMovement playerMovement;
+    public GameObject deathScreen;
+    private bool dead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,14 @@ public class GameManager : MonoBehaviour
         {
             generateLevel.ResetLevelSystem();
         }
+
+        if (dead)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                generateLevel.ResetLevelSystem();
+            }
+        }
     }
 
     public float rechargeTimer = 0f;
@@ -72,6 +84,11 @@ public class GameManager : MonoBehaviour
         if (currentPlayerHealth == 0)
         {
             healthRect.sizeDelta = new Vector2(rect0, 22f);
+            // DIE
+            playerMovement.StopMove();
+            deathScreen.SetActive(true);
+            dead = true;
+            // start listening for r to restart
             return true;
         }
         if (currentPlayerHealth == 1)
@@ -85,6 +102,13 @@ public class GameManager : MonoBehaviour
 
 
         return false;
+    }
+
+    public void ResetFromDeath()
+    {
+        playerMovement.StartMove();
+        deathScreen.SetActive(false);
+        dead = false;
     }
 
     public void ResetHealth()
