@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour
         {
             RechargeHealth();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            generateLevel.ResetLevelSystem();
+        }
     }
 
     public float rechargeTimer = 0f;

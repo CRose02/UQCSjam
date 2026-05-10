@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using TMPro;
+using UnityEditorInternal;
 
 public class GenerateLevel : MonoBehaviour
 {
@@ -38,6 +39,12 @@ public class GenerateLevel : MonoBehaviour
         //triangleEnemyCountByLevel.Add(1, 2);
         //triangleEnemyCountByLevel.Add(2, 2);
         //triangleEnemyCountByLevel.Add(2, 2);
+    }
+
+    public void ResetLevelSystem()
+    {
+        level = 0;
+        GenerateNew();
     }
 
     public void GenerateNew()
