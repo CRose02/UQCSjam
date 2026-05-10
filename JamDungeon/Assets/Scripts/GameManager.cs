@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class GameManager : MonoBehaviour
     public bool hasKey;
     private GameObject zone;
     public GenerateLevel generateLevel;
+
+    public Sprite tickSprite;
+    public Sprite crossSprite;
+    public Image keyCheckbox;
 
     // Start is called before the first frame update
     void Start()
@@ -125,6 +130,12 @@ public class GameManager : MonoBehaviour
     {
         hasKey = true;
         zone.SetActive(true);
+        keyCheckbox.sprite = tickSprite;
+    }
+
+    public void ResetKeyUI()
+    {
+        keyCheckbox.sprite = crossSprite;
     }
 
     private int EnemyCount()
