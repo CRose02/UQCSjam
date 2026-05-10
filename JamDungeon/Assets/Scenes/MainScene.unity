@@ -1478,6 +1478,37 @@ MonoBehaviour:
   currentPlayerHealth: 3
   hasKey: 0
   generateLevel: {fileID: 0}
+  rechargeTimer: 0
+  rechargeTime: 4
+  rechargeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.4956131
+      value: 0.009429932
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  healthRect: {fileID: 1120714503}
+  rect3: 196
+  rect2: 100
+  rect1: 15
+  rect0: 0
 --- !u!4 &1208472356
 Transform:
   m_ObjectHideFlags: 0

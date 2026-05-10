@@ -45,6 +45,7 @@ public class GenerateLevel : MonoBehaviour
         GameManager.Instance.hasKey = false;
         level++;
         tmpLevelText.text = $"Level: {level}";
+        GameManager.Instance.ResetHealth();
 
         if (levelParent.childCount > 0)
         {

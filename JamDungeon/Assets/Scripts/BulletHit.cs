@@ -46,7 +46,7 @@ public class BulletHit : MonoBehaviour
             return;
         }
 
-        GameManager.Instance.TakeDamage();
+        //GameManager.Instance.TakeDamage();
 
         // instantiate particle effect
         PlayerDamage playerDamage = collision.gameObject.GetComponentInChildren<PlayerDamage>();

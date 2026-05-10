@@ -39,17 +39,81 @@ public class GameManager : MonoBehaviour
         {
             onKeyPickup();
         }
+
+        if (currentPlayerHealth != maxPlayerHealth && currentPlayerHealth > 0)
+        {
+            RechargeHealth();
+        }
     }
+
+    public float rechargeTimer = 0f;
+    public float rechargeTime;
+    public AnimationCurve rechargeCurve;
+    public RectTransform healthRect;
+    public float rect3;
+    public float rect2;
+    public float rect1;
+    public float rect0;
 
     public bool TakeDamage()
     {
         currentPlayerHealth--;
+        rechargeTimer = 0f;
         if (currentPlayerHealth == 0)
         {
+            healthRect.sizeDelta = new Vector2(rect0, 22f);
             return true;
         }
+        if (currentPlayerHealth == 1)
+        {
+            healthRect.sizeDelta = new Vector2(rect1, 22f);
+        }
+        if (currentPlayerHealth == 2)
+        {
+            healthRect.sizeDelta = new Vector2(rect2, 22f);
+        }
+
 
         return false;
+    }
+
+    public void ResetHealth()
+    {
+        currentPlayerHealth = maxPlayerHealth;
+        healthRect.sizeDelta = new Vector2(rect3, 22f);
+        rechargeTimer = 0f;
+    }
+
+    private void RechargeHealth()
+    {
+        rechargeTimer += Time.deltaTime;
+        if (rechargeTimer > rechargeTime)
+        {
+            rechargeTimer = 0f;
+            currentPlayerHealth++;
+
+            if (currentPlayerHealth == 1)
+            {
+                healthRect.sizeDelta = new Vector2(rect1, 22f);
+            }
+            if (currentPlayerHealth == 2)
+            {
+                healthRect.sizeDelta = new Vector2(rect2, 22f);
+            }
+            if (currentPlayerHealth == 3)
+            {
+                healthRect.sizeDelta = new Vector2(rect3, 22f);
+            }
+        }
+
+        if (currentPlayerHealth == 1)
+        {
+            healthRect.sizeDelta = new Vector2(Mathf.Lerp(rect1, rect2, rechargeCurve.Evaluate(rechargeTimer/rechargeTime)), 22f);
+        }
+        if (currentPlayerHealth == 2)
+        {
+            healthRect.sizeDelta = new Vector2(Mathf.Lerp(rect2, rect3, rechargeCurve.Evaluate(rechargeTimer / rechargeTime)), 22f);
+        }
     }
 
     public void AssignZone(GameObject zoneInst)

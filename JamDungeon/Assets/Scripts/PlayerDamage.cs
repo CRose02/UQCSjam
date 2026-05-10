@@ -92,7 +92,7 @@ public class PlayerDamage : MonoBehaviour
         BeginInvinsible();
         //BeginFreeze();
         StartCoroutine(Freeze());
-        GameManager.Instance.TakeDamage();
+        //GameManager.Instance.TakeDamage();
 
         Destroy(collision.gameObject.transform.parent.gameObject);
     }
