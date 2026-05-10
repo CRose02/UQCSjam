@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using TMPro;
-using UnityEditorInternal;
 
 public class GenerateLevel : MonoBehaviour
 {

@@ -1,6 +1,8 @@
-Open the build folder
+Open the "JamDungeon" folder
 
-Run the .exe
+Open the "Build" folder
+
+Run JamDungeon.exe
 
 
 
