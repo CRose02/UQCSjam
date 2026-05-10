@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
+using UnityEngine.SceneManagement;
 
 public class ExitLevel : MonoBehaviour
 {
@@ -31,6 +31,11 @@ public class ExitLevel : MonoBehaviour
     public void OnExit()
     {
         //generateLevel.GenerateNew();
+        if (!levelTransition)
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
         levelTransition.Begin();
     }
 }

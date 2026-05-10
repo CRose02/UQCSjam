@@ -169,6 +169,10 @@ public class GameManager : MonoBehaviour
 
     private int EnemyCount()
     {
+        if (!generateLevel)
+        {
+            return 1;
+        }
         return generateLevel.enemyParent.childCount;
     }
 
